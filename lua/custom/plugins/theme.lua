@@ -4,7 +4,7 @@ if not vim.g.vscode then
       
     priority = 999,
     config = function()
-      vim.opt.background = "dark" -- set this to dark or light
+      vim.opt.background = "dark"
       vim.cmd("colorscheme oxocarbon")
     end,
   }} 
