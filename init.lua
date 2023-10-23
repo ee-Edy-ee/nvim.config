@@ -208,8 +208,8 @@ require('lazy').setup({
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
-  require 'kickstart.plugins.autoformat',
-  require 'kickstart.plugins.debug',
+  require 'plugins.autoformat',
+  require 'plugins.debug',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -217,7 +217,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  { import = 'custom.plugins' },
+  { import = 'plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -261,6 +261,14 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- Set the size of a hard tabstop to 4
+vim.o.tabstop = 4
+
+-- Use spaces instead of tab characters
+vim.o.expandtab = true
+
+-- Set the size of an "indent" to 4
+vim.o.shiftwidth = 4
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -445,7 +453,7 @@ require('which-key').register {
   ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
   ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
   ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+  -- ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
@@ -547,8 +555,10 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
+    { name = "copilot", group_index = 2 },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'emoji' }
   },
 }
 
