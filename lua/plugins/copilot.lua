@@ -12,16 +12,6 @@ return { -- better text objects
         snippet_engine = "luasnip"
     }
 }, {
-    "smjonas/inc-rename.nvim",
-    cmd = "IncRename",
-    config = function()
-        vim.keymap.set("n", "<leader>rn", function()
-            return ":IncRename " .. vim.fn.expand("<cword>")
-        end, {
-            expr = true
-        })
-    end
-}, {
     "ThePrimeagen/refactoring.nvim",
     keys = {{
         "<leader>r",
